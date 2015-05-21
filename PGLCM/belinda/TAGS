@@ -1,0 +1,176 @@
+
+Bank.hpp,341
+# define   	_BANK_HPP_12,243
+class Bank{Bank20,384
+  const unsigned int _maxSize;Bank::_maxSize33,557
+  unsigned int _start;Bank::_start34,589
+  unsigned int _end;Bank::_end35,613
+  char *_data;Bank::_data36,635
+Bank::Bank(42,690
+void Bank::pushBack(57,998
+void *Bank::popFront(Bank::popFront69,1275
+bool Bank::empty(78,1460
+
+InternalBank.hpp,751
+#define   	_INTERNAL_HPP_12,251
+typedef Bank internal_t;19,337
+typedef int InternalTupleRef;20,363
+#define INTERNAL_USE_SPINLOCKS25,458
+class Internal{Internal27,490
+  internal_t _tuples;Internal::_tuples63,881
+  pthread_spinlock_t _spin;Internal::_spin65,934
+  pthread_mutex_t _mutex;Internal::_mutex67,969
+  pthread_cond_t _cond;Internal::_cond68,995
+  bool _closed;Internal::_closed70,1026
+Internal::Internal(76,1081
+Internal::~Internal(87,1331
+InternalTupleRef Internal::put(97,1502
+int Internal::get(114,1944
+void *Internal::iGet(Internal::iGet142,2510
+void Internal::close(172,3073
+bool Internal::getAccess(185,3348
+void Internal::releaseAccess(194,3500
+bool Internal::waitTuple(203,3645
+bool Internal::empty(214,3837
+
+Internal.hpp,792
+#define   	_INTERNAL_HPP_12,251
+typedef std::deque<void *> internal_t;18,336
+typedef std::deque<void *>::iterator InternalTupleRef;19,376
+#define INTERNAL_USE_SPINLOCKS24,496
+class Internal{Internal26,528
+  internal_t _tuples;Internal::_tuples62,919
+  pthread_spinlock_t _spin;Internal::_spin64,972
+  pthread_mutex_t _mutex;Internal::_mutex66,1007
+  pthread_cond_t _cond;Internal::_cond67,1033
+  bool _closed;Internal::_closed69,1064
+Internal::Internal(75,1119
+Internal::~Internal(85,1316
+InternalTupleRef Internal::put(95,1487
+int Internal::get(108,1806
+void *Internal::iGet(Internal::iGet134,2306
+void Internal::close(162,2789
+bool Internal::getAccess(175,3064
+void Internal::releaseAccess(184,3216
+bool Internal::waitTuple(193,3361
+bool Internal::empty(204,3553
+
+MultiTuple.hpp,1008
+#define   	_MULTITUPLE_HPP_12,242
+static char trace_access[trace_access28,476
+static int trace_access_count=29,509
+static const int SPACE_CLOSED 32,545
+static const int NO_MATCHES 33,582
+static const int MAX_INTERNALS 39,684
+class TupleRef 44,792
+  TupleRef(TupleRef::TupleRef47,870
+  TupleRef(TupleRef::TupleRef49,886
+  inline Tuple *operator*(TupleRef::operator*54,995
+  inline void destroyTuple(TupleRef::destroyTuple58,1092
+  unsigned short int _tsIdx;TupleRef::_tsIdx62,1205
+class MultiTuple65,1239
+  int removeTuple(MultiTuple::removeTuple147,3331
+  pthread_mutex_t _mutex;MultiTuple::_mutex190,4431
+  pthread_cond_t _cond;MultiTuple::_cond191,4458
+  unsigned int _closeCount;MultiTuple::_closeCount193,4484
+  bool _closed;MultiTuple::_closed194,4513
+  Internal _data[MultiTuple::_data197,4612
+  unsigned int _nbSleeping;MultiTuple::_nbSleeping199,4647
+TupleRef MultiTuple::put(207,4736
+size_t MultiTuple::currentSize(212,4899
+typedef MultiTuple MultiSpace;216,5001
+
+ThreadID.hpp,716
+# define   	_THREADID_HPP_12,251
+struct eventData{eventData29,545
+  double startDate;eventData::startDate31,572
+  std::string eventName;eventData::eventName32,593
+class THREAD{THREAD36,644
+  static pthread_t _ids[THREAD::_ids47,960
+  static unsigned short int _idx;THREAD::_idx48,991
+  static eventData _events[THREAD::_events51,1047
+  static const double BEGIN;THREAD::BEGIN52,1081
+void THREAD::registerThread(56,1137
+unsigned short int THREAD::getMyID(64,1362
+void THREAD::eventStart(75,1561
+void THREAD::eventEnd(81,1721
+double THREAD::getDate(100,2243
+void THREAD::eventStart(108,2378
+void THREAD::eventEnd(111,2436
+double THREAD::getDate(114,2464
+void THREAD::bindToProcessor(119,2516
+
+TSCache.hpp,1652
+#define   	_TSCACHE_HPP_12,246
+#define AUTO_TERMINATE19,362
+const unsigned short int NUM_INTERNALS 20,385
+#define MACHINE_NEHALEM28,588
+#define NUM_L3_INTERNALS 32,660
+#define NUM_L3_CORES 33,687
+static const int mapL3toThreads[mapL3toThreads34,710
+static const int threadIdxInL3 35,824
+static const int mapThreadsToL3 36,914
+#define NUM_L3_INTERNALS 39,1066
+#define NUM_L3_CORES 40,1093
+static const int mapL3toThreads[mapL3toThreads41,1116
+static const int threadIdxInL3 42,1170
+static const int mapThreadsToL3 43,1219
+typedef int TupleRef;65,1874
+class TupleSpace{TupleSpace67,1897
+  unsigned int _nbTuples;TupleSpace::_nbTuples99,2491
+  unsigned int _nbTuplesL3[TupleSpace::_nbTuplesL3100,2517
+  unsigned int _nbWorkingL3[TupleSpace::_nbWorkingL3101,2564
+  unsigned short int _workingInternal;TupleSpace::_workingInternal103,2613
+  bool _closed;TupleSpace::_closed104,2653
+  unsigned int _nbWorking;TupleSpace::_nbWorking105,2669
+  pthread_spinlock_t _spin;TupleSpace::_spin107,2729
+  pthread_mutex_t _mutex;TupleSpace::_mutex109,2764
+  pthread_cond_t _cond;TupleSpace::_cond110,2791
+  pthread_mutex_t _mutexL3[TupleSpace::_mutexL3112,2817
+  pthread_cond_t _condL3[TupleSpace::_condL3113,2864
+  Internal _memInternal TupleSpace::_memInternal116,2919
+  Internal _L3Internals[TupleSpace::_L3Internals117,3010
+  Internal _internals[TupleSpace::_internals119,3102
+void TupleSpace::tupleCountInc(124,3176
+void TupleSpace::tupleCountDec(141,3553
+void TupleSpace::tupleL3CountInc(156,3915
+void TupleSpace::tupleL3CountDec(173,4396
+void TupleSpace::workingL3Dec(190,4886
+void TupleSpace::close(209,5497
+
+Tuple.hpp,662
+#define   	_TUPLE_HPP_12,245
+class Tuple{Tuple25,365
+  inline void print(Tuple::print45,721
+  char *_data;Tuple::_data63,1040
+  size_t _size;Tuple::_size64,1056
+  std::vector<element> _elements;Tuple::_elements65,1072
+  bool _any;Tuple::_any66,1106
+  int _sum;Tuple::_sum68,1143
+class element{element78,1248
+  element(element::element80,1271
+  char elementName;element::elementName86,1437
+  int dataSize;element::dataSize87,1457
+  unsigned short int offset;element::offset88,1473
+T &Tuple::getValue(Tuple::getValue95,1554
+int Tuple::computeCheckSum(104,1707
+void Tuple::checkMyIntegrity(117,1958
+void Tuple::checkIntegrity(121,2018
+
+TupleSpace.hpp,734
+#define   	_TUPLESPACE_HPP_12,255
+#define AUTO_TERMINATE17,353
+const unsigned short int NUM_INTERNALS 18,376
+typedef int TupleRef;27,580
+class TupleSpace{TupleSpace29,603
+  unsigned int _nbTuples;TupleSpace::_nbTuples52,1015
+  unsigned short int _workingInternal;TupleSpace::_workingInternal53,1041
+  bool _closed;TupleSpace::_closed54,1081
+  unsigned int _nbWorking;TupleSpace::_nbWorking55,1097
+  pthread_spinlock_t _spin;TupleSpace::_spin57,1157
+  pthread_mutex_t _mutex;TupleSpace::_mutex59,1192
+  pthread_cond_t _cond;TupleSpace::_cond60,1219
+  Internal _internals[TupleSpace::_internals62,1251
+void TupleSpace::tupleCountInc(67,1325
+void TupleSpace::tupleCountDec(84,1702
+void TupleSpace::close(99,2064

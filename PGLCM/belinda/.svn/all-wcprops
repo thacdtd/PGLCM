@@ -1,0 +1,95 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/svnroot/plcm/!svn/ver/257/belinda
+END
+Tuple.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svnroot/plcm/!svn/ver/123/belinda/Tuple.hpp
+END
+MultiTuple.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/plcm/!svn/ver/106/belinda/MultiTuple.cpp
+END
+TupleSpace.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/plcm/!svn/ver/257/belinda/TupleSpace.cpp
+END
+MultiTuple.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/plcm/!svn/ver/106/belinda/MultiTuple.hpp
+END
+TupleSpace.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/plcm/!svn/ver/223/belinda/TupleSpace.hpp
+END
+TSCache.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/plcm/!svn/ver/257/belinda/TSCache.cpp
+END
+InternalBank.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/plcm/!svn/ver/123/belinda/InternalBank.hpp
+END
+test.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svnroot/plcm/!svn/ver/125/belinda/test.cpp
+END
+TSCache.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svnroot/plcm/!svn/ver/257/belinda/TSCache.hpp
+END
+Bank.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svnroot/plcm/!svn/ver/116/belinda/Bank.hpp
+END
+testtempl.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/plcm/!svn/ver/52/belinda/testtempl.cpp
+END
+Internal.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/plcm/!svn/ver/223/belinda/Internal.hpp
+END
+Tuple.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 44
+/svnroot/plcm/!svn/ver/123/belinda/Tuple.cpp
+END
+ThreadID.hpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svnroot/plcm/!svn/ver/223/belinda/ThreadID.hpp
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svnroot/plcm/!svn/ver/257/belinda/Makefile
+END
